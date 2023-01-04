@@ -17,6 +17,7 @@
 
             <Label
                 Text="Welcome to our website!"
+                TextColor="Olive"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
