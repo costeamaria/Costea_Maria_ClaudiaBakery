@@ -8,5 +8,6 @@
 
         <ShellContent Title="Claudia Bakery Shop" ContentTemplate="{DataTemplate local:MainPage}" />
         <ShellContent Title="About" ContentTemplate="{DataTemplate local:AboutClaudia}" />
+        <ShellContent Title="My Wish Lists" ContentTemplate="{DataTemplate local:WishEntryPage}"/>
 
 </Shell>
