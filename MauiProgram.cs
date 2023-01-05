@@ -1,4 +1,7 @@
-﻿namespace Costea_Maria_ClaudiaBakery;
+﻿using Costea_Maria_ClaudiaBakery;
+
+
+namespace Costea_Maria_ClaudiaBakery;
 
 public static class MauiProgram
 {
@@ -12,7 +15,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+		
 
-		return builder.Build();
+        return builder.Build();
 	}
 }
