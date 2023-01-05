@@ -10,11 +10,15 @@ namespace Costea_Maria_ClaudiaBakery.ViewModel
 {
     public class LoginViewModel
     {
-        private string _username, _password;
-        public string Username { get => _username; set => _username = value; }
+        private string _userName, _password;
+
+        public string UserName { get => _userName; set => _userName = value; }
         public string Password { get => _password; set => _password = value; }
-        public ICommand RegisterCommand { private get; set; }
-        public ICommand LoginCommand { private get; set; }
+
+        public ICommand RegisterCommand { private set; get; }
+
+        public ICommand LoginCommand { private set; get; }
+
         private INavigation Navigation;
 
         public LoginViewModel(INavigation navigation)
@@ -26,32 +30,31 @@ namespace Costea_Maria_ClaudiaBakery.ViewModel
 
         private async void OnLoginCommand(object obj)
         {
-            var loginData = await App.Database.GetLoginDataAsync(Username);
-            if(loginData != null)
+            var loginData = await App.Database.GetLoginDataAsync(UserName);
+            if (loginData != null)
             {
-                if(string.Equals(loginData.Password,Password))
+                if (string.Equals(loginData.Password, Password))
                 {
-                    //Navigation Next Page
-                    //await Navigation.PushModelAsync(new ProductPage());
+                    await Navigation.PushModalAsync(new AppShell());
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("failure", "Invalid Password", "OK");
+                    await App.Current.MainPage.DisplayAlert("failure", "Invalid Password", "Ok");
                 }
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("failure", "Invalid Username", "OK");
+                await App.Current.MainPage.DisplayAlert("failure", "Invalid Username", "Ok");
             }
         }
 
         private void OnRegisterCommand(object obj)
         {
             LoginModel lm = new LoginModel();
-            lm.Username = Username;
+            lm.Username = UserName;
             lm.Password = Password;
             App.Database.SaveLoginDataAsync(lm);
-            App.Current.MainPage.DisplayAlert("success", "Registration Successful", "OK");
+            App.Current.MainPage.DisplayAlert("Success", "Registration uccessful", "Ok");
         }
     }
 }
