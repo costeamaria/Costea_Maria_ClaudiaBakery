@@ -30,6 +30,7 @@ namespace Costea_Maria_ClaudiaBakery.ViewModel
 
         private async void OnLoginCommand(object obj)
         {
+
             var loginData = await App.Database.GetLoginDataAsync(UserName);
             if (loginData != null)
             {

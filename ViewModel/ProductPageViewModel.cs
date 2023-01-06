@@ -1,4 +1,5 @@
 ﻿using Costea_Maria_ClaudiaBakery.Models;
+using Plugin.LocalNotification;
 using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Intrinsics.Arm;
@@ -80,8 +81,23 @@ namespace Costea_Maria_ClaudiaBakery.ViewModel
         {
             this.SelectedItem = item;
             await navigation.PushModalAsync(new DetailsPage(this));
+            var request = new NotificationRequest
+            {
+                NotificationId = 1337,
+                Title = "Register to our website",
+                Subtitle = "Hello",
+                Description = "ClaudiaBakery",
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Now.AddSeconds(1),
+                    NotifyRepeatInterval = TimeSpan.FromDays(1),
+                },
+
+            };
+            LocalNotificationCenter.Current.Show(request);
         }
+    }
 
         
     }
-}
+
