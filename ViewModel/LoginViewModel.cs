@@ -35,7 +35,7 @@ namespace Costea_Maria_ClaudiaBakery.ViewModel
             {
                 if (string.Equals(loginData.Password, Password))
                 {
-                    await Navigation.PushModalAsync(new AppShell());
+                    await Navigation.PushModalAsync(new ProductPage());
                 }
                 else
                 {
