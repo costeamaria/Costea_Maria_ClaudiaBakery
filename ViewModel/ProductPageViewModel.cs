@@ -96,6 +96,7 @@ namespace Costea_Maria_ClaudiaBakery.ViewModel
             };
             LocalNotificationCenter.Current.Show(request);
         }
+        
     }
 
         
